@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosAPI = axios.create({
-  baseURL: "http://api.tvmaze.com/",
+  baseURL: "http://localhost:8000/",
 });
 
 export default axiosAPI;

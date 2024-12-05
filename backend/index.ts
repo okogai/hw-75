@@ -8,20 +8,25 @@ app.use(express.json());
 
 const Vigenere = require('caesar-salad').Vigenere;
 
+
 app.post('/decode', (req, res) => {
-    const {password, message} = req.body;
-    if (password && message) {
-        const decodedMessage = Vigenere.Decipher(password).crypt(message);
-        res.send(decodedMessage);
+    const { password, message } = req.body;
+
+    if (!message || !password) {
+        res.status(400).json({ error: "Password and message are required" });
     }
+    const decodedText = Vigenere.Decipher(password).crypt(message);
+    res.send({ decoded: decodedText });
 });
 
 app.post('/encode', (req, res) => {
     const { password, message } = req.body;
-    if (password && message) {
-        const encodedText = Vigenere.Cipher(password).crypt(message);
-        res.send(encodedText);
+
+    if (!message || !password) {
+        res.status(400).json({ error: "Password and message are required" });
     }
+    const encodedText = Vigenere.Cipher(password).crypt(message);
+    res.send({ decoded: encodedText });
 });
 
 app.listen(port, () => {
