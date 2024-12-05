@@ -17,7 +17,6 @@ app.post('/decode', (req, res) => {
     }
     const decodedText = Vigenere.Decipher(password).crypt(message);
     res.send({ message: decodedText });
-    console.log({ message: decodedText });
 });
 
 app.post('/encode', (req, res) => {
@@ -28,7 +27,6 @@ app.post('/encode', (req, res) => {
     }
     const encodedText = Vigenere.Cipher(password).crypt(message);
     res.send({ message: encodedText });
-    console.log({ message: encodedText });
 });
 
 app.listen(port, () => {
