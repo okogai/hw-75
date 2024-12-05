@@ -16,7 +16,8 @@ app.post('/decode', (req, res) => {
         res.status(400).json({ error: "Password and message are required" });
     }
     const decodedText = Vigenere.Decipher(password).crypt(message);
-    res.send({ decoded: decodedText });
+    res.send({ message: decodedText });
+    console.log({ message: decodedText });
 });
 
 app.post('/encode', (req, res) => {
@@ -26,7 +27,8 @@ app.post('/encode', (req, res) => {
         res.status(400).json({ error: "Password and message are required" });
     }
     const encodedText = Vigenere.Cipher(password).crypt(message);
-    res.send({ decoded: encodedText });
+    res.send({ message: encodedText });
+    console.log({ message: encodedText });
 });
 
 app.listen(port, () => {
